@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Currículo ATS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:root{--bg:#eef1f4;--sf:#fff;--ink:#14202b;--mut:#5b6b78;--line:#d5dce2;--ac:#0f6e8c;--acs:#dcedf3;--ok:#1e7b4f;--wr:#a05f00;--bd:#b3261e;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f161c;--sf:#17212a;--ink:#e6ecf1;--mut:#9aabb8;--line:#2b3946;--ac:#5bb6d6;--acs:#173642;--ok:#52c08a;--wr:#e0a64a;--bd:#f07a72;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f161c;--sf:#17212a;--ink:#e6ecf1;--mut:#9aabb8;--line:#2b3946;--ac:#5bb6d6;--acs:#173642;--ok:#52c08a;--wr:#e0a64a;--bd:#f07a72;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Instrument Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:24px;align-items:start}
+header{grid-column:1/-1}
+h1.t{font-size:28px;line-height:1.15;margin:0 0 6px;letter-spacing:-.01em}
+header p{margin:0;color:var(--mut);max-width:70ch}
+details.why{margin-top:12px;background:var(--sf);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+details.why summary{cursor:pointer;font-weight:600}
+details.why ul{margin:8px 0 0;padding-left:18px;color:var(--mut)}
+section.card{background:var(--sf);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+section.card h2{font-size:17px;margin:0 0 4px}
+.hint{color:var(--mut);font-size:13px;margin:0 0 12px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font-size:13px;font-weight:600}
+label>span.sm{font-weight:400;color:var(--mut)}
+input,textarea,select{width:100%;margin-top:4px;padding:9px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:inherit;font-weight:400}
+textarea{resize:vertical;min-height:84px}
+input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.sub{border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px}
+.sub .g{margin-bottom:10px}
+.span2{grid-column:1/-1}
+button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--sf);color:var(--ink);padding:8px 12px}
+button.pri{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600;padding:11px 18px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button.pri{color:#06202a}}
+:root[data-theme="dark"] button.pri{color:#06202a}
+button.lnk{border:0;background:none;color:var(--bd);padding:4px 0;font-size:13px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.cnt{font-size:12px;color:var(--mut);margin-top:4px}
+.side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tabs button{flex:1;font-weight:600}
+.tabs button[aria-selected="true"]{background:var(--ac);border-color:var(--ac);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabs button[aria-selected="true"]{color:#06202a}}
+:root[data-theme="dark"] .tabs button[aria-selected="true"]{color:#06202a}
+#paper{background:#fff;color:#111;font:12.5px/1.45 Arial,Helvetica,sans-serif;padding:30px 30px 34px;border:1px solid var(--line);border-radius:4px;box-shadow:0 6px 24px rgba(20,32,43,.12)}
+#paper h1{font-size:21px;margin:0;color:#111}
+#paper .role{font-size:13px;margin-top:2px}
+#paper .ct{font-size:11.5px;color:#333;margin:4px 0 8px;overflow-wrap:anywhere}
+#paper h2{font-size:12.5px;text-transform:uppercase;border-bottom:1px solid #111;margin:14px 0 6px;padding-bottom:2px;letter-spacing:.03em}
+#paper p{margin:0 0 4px}
+#paper .it{margin-bottom:8px}
+#paper .sb{color:#333}
+#paper ul{margin:3px 0 0;padding-left:18px}
+#paper .empty{color:#666}
+details.txt{margin-top:12px}
+details.txt summary{cursor:pointer;font-weight:600}
+#plain{min-height:180px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.score{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.score svg{flex:none}
+.score b{font-size:19px;display:block}
+.pr{background:var(--acs);border-radius:8px;padding:10px 14px;margin-bottom:14px}
+.pr b{display:block;margin-bottom:4px}
+.pr ol{margin:0;padding-left:18px}
+.grp{margin-bottom:14px}
+.grp h3{font-size:14px;margin:0 0 6px;display:flex;justify-content:space-between}
+.grp h3 span{color:var(--mut);font-weight:400}
+.ck{border-top:1px solid var(--line);padding:8px 0;display:grid;grid-template-columns:70px 1fr;gap:10px}
+.st{font-size:12px;font-weight:700;padding:2px 0;border-radius:4px;text-align:center;height:fit-content;border:1px solid currentColor}
+.st.ok{color:var(--ok)}.st.wr{color:var(--wr)}.st.bd{color:var(--bd)}.st.in{color:var(--ac)}
+.ck b{display:block;font-size:14px}
+.ck p{margin:2px 0 0;color:var(--mut);font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{background:var(--acs);border-radius:99px;padding:2px 10px;font-size:12px}
+.empty2{color:var(--mut)}
+.bar{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:end;background:var(--sf);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.bar label{min-width:170px;flex:1}
+.chk{display:inline-flex;gap:6px;align-items:center;font-weight:400;margin-right:12px}
+.chk input{width:auto;margin:0}
+[hidden]{display:none!important}
+@media (max-width:920px){.wrap{grid-template-columns:minmax(0,1fr);padding:14px}.side{position:static;max-height:none}.g{grid-template-columns:1fr}}
+@media (max-width:920px){#paper{padding:20px}}
+.mnav{display:none}
+@media (max-width:920px){
+.wrap{padding:12px;gap:12px}
+body{padding-bottom:64px}
+.bar,#form,#side{display:none}
+body[data-v="e"] #form,body[data-v="p"] #side,body[data-v="r"] #side{display:block}
+body[data-v="m"] .bar{display:flex}
+body:not([data-v="e"]) header{display:none}
+h1.t{font-size:22px}
+.tabs{display:none}
+input,textarea,select{font-size:16px}
+button{min-height:44px}
+.bar label{flex-basis:100%}
+.bar button{flex:1}
+#go{flex:1}
+section.card{padding:14px}
+#form section.card>h2:first-child{display:flex;justify-content:space-between;align-items:center;margin:0;cursor:pointer;min-height:36px}
+#form section.card>h2:first-child::after{content:"−";font-size:20px;color:var(--mut)}
+#form section.card.closed>h2:first-child::after{content:"+"}
+#form section.card.closed>:not(:first-child){display:none}
+#paper{font-size:12px;padding:18px}
+.mnav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--sf);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.mnav button{border:0;border-radius:0;background:none;min-height:54px;font-size:13px;font-weight:600;color:var(--mut)}
+.mnav button[aria-current="page"]{color:var(--ac);box-shadow:inset 0 3px 0 var(--ac)}
+}
+</style>
+</head>
+<body data-v="e">
+<div class="wrap">
+<header>
+  <h1 class="t">Currículo ATS</h1>
+  <p>Preencha os campos e veja a prévia no layout que os sistemas de triagem leem sem erro. No fim, clique em Avaliar currículo para receber a nota e o que corrigir.</p>
+  <details class="why"><summary>Por que este formato?</summary>
+    <ul>
+      <li>Coluna única, sem tabelas, caixas, ícones, fotos ou gráficos: o ATS lê o texto na ordem em que aparece.</li>
+      <li>Fonte padrão (Arial) e títulos convencionais: Experiência Profissional, Formação Acadêmica, Competências.</li>
+      <li>Ordem cronológica inversa e datas em MM/AAAA, para o sistema calcular seu tempo de carreira.</li>
+      <li>Envie em .docx ou em PDF gerado a partir do texto (não de imagem). Nunca envie captura de tela.</li>
+    </ul>
+  </details>
+</header>
+<div class="bar" id="bar">
+  <label>Modelo salvo <select id="ms"></select></label>
+  <label>Nome do modelo <input id="mn" placeholder="Ex.: Back-end Java para bancos" autocomplete="off"></label>
+  <button type="button" id="mnew">Novo</button><button type="button" id="mdup">Duplicar</button><button type="button" class="lnk" id="mdel">Excluir</button>
+  <button type="button" id="bk" data-dl hidden>Backup .json</button><button type="button" id="rsb">Restaurar backup</button><input type="file" id="rs" accept=".json,application/json" hidden>
+  <span class="cnt" id="bm" role="status"></span>
+</div>
+
+<main id="form">
+  <section class="card">
+    <h2>Contato</h2><p class="hint">Tudo em texto simples, sem ícones. Este bloco vai no topo da página, nunca no cabeçalho do arquivo.</p>
+    <div class="g" id="ctt"></div>
+  </section>
+
+  <section class="card">
+    <h2>Cabeçalho do arquivo</h2><p class="hint">Define o topo do currículo, os títulos das seções e o nome do arquivo. Mantenha tudo no corpo da página: nome e contatos colocados no cabeçalho ou rodapé do Word muitas vezes não são lidos pelo ATS.</p>
+    <div class="g">
+      <label>Separador dos contatos<select data-k="sep"><option value=" | ">Barra ( | )</option><option value=" • ">Ponto ( • )</option><option value=" - ">Hífen ( - )</option><option value=", ">Vírgula ( , )</option></select></label>
+      <label>Nome do arquivo <span class="sm">(opcional)</span><input data-k="arq" placeholder="Nome_Sobrenome_Cargo" autocomplete="off"></label>
+      <label class="span2">Linha extra abaixo dos contatos <span class="sm">(ex.: disponibilidade e modelo de trabalho)</span><input data-k="extra" placeholder="Disponível para CLT, híbrido ou presencial" autocomplete="off"></label>
+    </div>
+    <div style="margin:12px 0 4px;font-size:13px"><b>Mostrar no topo:</b><br>
+      <label class="chk"><input type="checkbox" data-s="cidade">Cidade</label><label class="chk"><input type="checkbox" data-s="email">E-mail</label><label class="chk"><input type="checkbox" data-s="tel">Telefone</label><label class="chk"><input type="checkbox" data-s="linkedin">LinkedIn</label><label class="chk"><input type="checkbox" data-s="site">GitHub ou portfólio</label></div>
+    <p class="cnt" id="arqp"></p>
+    <h2 style="font-size:15px;margin-top:14px">Títulos das seções</h2><p class="hint">Os ATS brasileiros reconhecem nomes convencionais. Mude só se a vaga usar outro termo padrão, como “Habilidades”.</p>
+    <div class="g" id="tit"></div>
+  </section>
+
+  <section class="card">
+    <h2>Resumo profissional</h2><p class="hint">Três a quatro linhas: cargo, anos de experiência, tecnologias ou áreas principais e um resultado concreto. Sem “eu”.</p>
+    <textarea data-k="resumo" id="resumo" placeholder="Engenheiro de software back-end com 6 anos de experiência em Java e Spring Boot. Reduzi em 40% o tempo de resposta de APIs de pagamento processando 2 milhões de transações por dia."></textarea>
+    <div class="cnt" id="rc"></div>
+  </section>
+
+  <section class="card">
+    <h2>Experiência profissional</h2><p class="hint">Da mais recente para a mais antiga. Em cada cargo, uma realização por linha, começando com verbo e, quando possível, com número.</p>
+    <div id="exp"></div>
+    <button type="button" data-add="exp">Adicionar experiência</button>
+  </section>
+
+  <section class="card">
+    <h2>Formação acadêmica</h2><p class="hint">Curso, instituição e período. Cursos incompletos entram com a previsão de conclusão.</p>
+    <div id="edu"></div>
+    <button type="button" data-add="edu">Adicionar formação</button>
+  </section>
+
+  <section class="card">
+    <h2>Competências</h2><p class="hint">Separe por vírgula. Use os nomes exatos das ferramentas, como aparecem nas vagas.</p>
+    <textarea data-k="skills" placeholder="Java, Spring Boot, JPA, Hibernate, REST, PostgreSQL, Docker, Git, JavaScript, React"></textarea>
+    <div class="cnt" id="kc"></div>
+  </section>
+
+  <section class="card">
+    <h2>Certificações e idiomas</h2>
+    <label>Certificações <span class="sm">(uma por linha, com instituição e ano)</span>
+      <textarea data-k="certs" placeholder="Oracle Certified Professional Java SE 17, Oracle, 2024"></textarea></label>
+    <label style="margin-top:10px">Idiomas
+      <input data-k="idiomas" placeholder="Português (nativo), Inglês (avançado), Espanhol (básico)"></label>
+  </section>
+
+  <section class="card">
+    <h2>Vaga alvo <span class="sm" style="font-weight:400;color:var(--mut)">(opcional)</span></h2>
+    <p class="hint">Cole a descrição da vaga. A avaliação mostra quais palavras-chave dela ainda faltam no seu currículo.</p>
+    <textarea data-k="vaga" style="min-height:130px" placeholder="Cole aqui a descrição completa da vaga"></textarea>
+  </section>
+
+  <div class="row">
+    <button type="button" class="pri" id="go">Avaliar currículo</button>
+    <button type="button" class="lnk" id="clr">Limpar tudo</button>
+  </div>
+</main>
+
+<aside class="side" id="side">
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" id="t1" aria-selected="true" data-tab="p">Prévia</button>
+    <button type="button" role="tab" id="t2" aria-selected="false" data-tab="r">Avaliação</button>
+  </div>
+  <div id="pp">
+    <div id="paper"></div>
+    <div class="row" style="margin-top:12px"><button type="button" class="pri" id="ddx" data-dl hidden>Baixar .docx</button><button type="button" id="dtx" data-dl hidden>Baixar .txt</button><span class="cnt" id="dm" role="status"></span></div>
+    <details class="txt"><summary>Versão em texto puro</summary>
+      <textarea id="plain" readonly></textarea>
+      <div class="row" style="margin-top:8px"><button type="button" id="cp">Copiar texto</button><span class="cnt" id="cpm" role="status"></span></div>
+    </details>
+  </div>
+  <div id="rp" hidden></div>
+</aside>
+<nav class="mnav" aria-label="Navegação"><button type="button" data-v="e" aria-current="page">Editar</button><button type="button" data-v="p">Prévia</button><button type="button" data-v="r">Avaliação</button><button type="button" data-v="m">Modelos</button></nav>
+</div>
+
+<script>
+const KEY='ats-cv-v2',K1='ats-cv-v1';
+const TIT={resumo:'Resumo Profissional',skills:'Competências',exp:'Experiência Profissional',edu:'Formação Acadêmica',certs:'Certificações',idiomas:'Idiomas'};
+const blank=()=>({nome:'',cargo:'',email:'',tel:'',cidade:'',linkedin:'',site:'',resumo:'',exp:[{cargo:'',empresa:'',local:'',ini:'',fim:'',b:''}],edu:[{curso:'',inst:'',ini:'',fim:''}],skills:'',certs:'',idiomas:'',vaga:'',sep:' | ',extra:'',arq:'',show:{cidade:1,email:1,tel:1,linkedin:1,site:1},tit:{...TIT}});
+let M,S,done=false;
+const fix=o=>{o=o||{};const b=blank(),d=Object.assign(b,o);d.show=Object.assign(blank().show,o.show);d.tit=Object.assign(blank().tit,o.tit);if(!d.exp||!d.exp.length)d.exp=blank().exp;if(!d.edu||!d.edu.length)d.edu=blank().edu;return d};
+const uid=()=>Math.random().toString(36).slice(2,9);
+try{M=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
+if(!M||!M.list||!M.list.length){let o={};try{o=JSON.parse(localStorage.getItem(K1)||'{}')}catch(e){}M={cur:'',list:[{id:uid(),name:'Modelo 1',data:o}]}}
+M.list.forEach(m=>m.data=fix(m.data));
+if(!M.list.find(m=>m.id===M.cur))M.cur=M.list[0].id;
+const cur=()=>M.list.find(m=>m.id===M.cur);
+S=cur().data;
+const save=()=>{cur().data=S;try{localStorage.setItem(KEY,JSON.stringify(M))}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=s=>s.split('\n').map(x=>x.trim().replace(/^[-•*–·]\s*/,'')).filter(Boolean);
+const rng=(a,b)=>[a,b].map(s=>s.trim()).filter(Boolean).join(' – ');
+const list=s=>s.split(/[,;\n]/).map(x=>x.trim()).filter(Boolean);
+
+const F=[['nome','Nome completo','Maria da Silva'],['cargo','Cargo-alvo','Desenvolvedor Back-end Java'],['email','E-mail','nome@email.com'],['tel','Telefone com DDD','+55 11 91234-5678'],['cidade','Cidade, UF','São Paulo, SP'],['linkedin','LinkedIn','linkedin.com/in/seunome'],['site','GitHub ou portfólio','github.com/seunome']];
+$('#ctt').innerHTML=F.map(([k,l,p])=>`<label>${l}<input data-k="${k}" placeholder="${p}" autocomplete="off"></label>`).join('');
+
+const LC={exp:[['cargo','Cargo'],['empresa','Empresa'],['local','Local (cidade, UF ou Remoto)'],['ini','Início (MM/AAAA)'],['fim','Fim (MM/AAAA ou Atual)']],edu:[['curso','Curso e grau'],['inst','Instituição'],['ini','Início (MM/AAAA)'],['fim','Conclusão (MM/AAAA)']]};
+function drawList(l){
+  $('#'+l).innerHTML=S[l].map((x,i)=>`<div class="sub"><div class="g">${LC[l].map(([k,n])=>`<label>${n}<input data-l="${l}" data-i="${i}" data-k="${k}" value="${esc(x[k])}"></label>`).join('')}</div>${l==='exp'?`<label>Realizações <span class="sm">(uma por linha)</span><textarea data-l="exp" data-i="${i}" data-k="b" placeholder="Reduzi em 40% o tempo de resposta das APIs de pagamento com cache distribuído&#10;Liderei a migração de 12 serviços para Spring Boot 3">${esc(x.b)}</textarea></label>`:''}<button type="button" class="lnk" data-del="${l}" data-i="${i}">Remover</button></div>`).join('');
+}
+function fillScalars(){document.querySelectorAll('[data-k]:not([data-l])').forEach(e=>{e.value=S[e.dataset.k]||''})}
+
+document.addEventListener('input',e=>{const t=e.target,k=t.dataset&&t.dataset.k;if(!k)return;
+  if(t.dataset.l)S[t.dataset.l][+t.dataset.i][k]=t.value;else S[k]=t.value;save();upd()});
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.add){S[t.dataset.add].push(blank()[t.dataset.add][0]);drawList(t.dataset.add);save()}
+  else if(t.dataset.del){const a=S[t.dataset.del];a.splice(+t.dataset.i,1);if(!a.length)a.push(blank()[t.dataset.del][0]);drawList(t.dataset.del);save();upd()}
+  else if(t.dataset.tab)tab(t.dataset.tab)});
+
+function doc(){
+  const h={nome:S.nome.trim(),cargo:S.cargo.trim(),c:['cidade','email','tel','linkedin','site'].filter(k=>S.show[k]).map(k=>S[k].trim()).filter(Boolean),x:S.extra.trim()};
+  const sec=[],K=list(S.skills);
+  if(S.resumo.trim())sec.push({t:S.tit.resumo||TIT.resumo,p:S.resumo.trim()});
+  if(K.length)sec.push({t:S.tit.skills||TIT.skills,p:K.join(', ')});
+  const E=S.exp.filter(x=>x.cargo.trim()||x.empresa.trim());
+  if(E.length)sec.push({t:S.tit.exp||TIT.exp,i:E.map(x=>({h:x.cargo.trim(),s:[[x.empresa,x.local].map(s=>s.trim()).filter(Boolean).join(', '),rng(x.ini,x.fim)].filter(Boolean).join(' | '),b:lines(x.b)}))});
+  const D=S.edu.filter(x=>x.curso.trim()||x.inst.trim());
+  if(D.length)sec.push({t:S.tit.edu||TIT.edu,i:D.map(x=>({h:x.curso.trim(),s:[x.inst.trim(),rng(x.ini,x.fim)].filter(Boolean).join(' | '),b:[]}))});
+  const C=lines(S.certs);if(C.length)sec.push({t:S.tit.certs||TIT.certs,i:[{h:'',s:'',b:C}]});
+  if(S.idiomas.trim())sec.push({t:S.tit.idiomas||TIT.idiomas,p:S.idiomas.trim()});
+  return{h,sec};
+}
+function text(){const{h,sec}=doc(),L=[];if(h.nome)L.push(h.nome);if(h.cargo)L.push(h.cargo);if(h.c.length)L.push(h.c.join(S.sep));if(h.x)L.push(h.x);
+  sec.forEach(s=>{L.push('',s.t.toUpperCase());if(s.p)L.push(s.p);(s.i||[]).forEach(i=>{if(i.h)L.push(i.h);if(i.s)L.push(i.s);i.b.forEach(b=>L.push('- '+b))})});return L.join('\n')}
+function prev(){const{h,sec}=doc();if(!h.nome&&!sec.length)return'<p class="empty">A prévia aparece aqui conforme você preenche.</p>';
+  return`<h1>${esc(h.nome||'Seu nome')}</h1>${h.cargo?`<div class="role">${esc(h.cargo)}</div>`:''}<div class="ct">${esc(h.c.join(S.sep))}${h.x?`<br>${esc(h.x)}`:''}</div>`+sec.map(s=>`<h2>${esc(s.t)}</h2>`+(s.p?`<p>${esc(s.p)}</p>`:'')+(s.i||[]).map(i=>`<div class="it">${i.h?`<b>${esc(i.h)}</b>`:''}${i.s?`<div class="sb">${esc(i.s)}</div>`:''}${i.b.length?`<ul>${i.b.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`:''}</div>`).join('')).join('')}
+
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const toks=s=>(norm(s).match(/[a-z0-9+#][a-z0-9+#.]*/g)||[]).map(t=>t.replace(/\.+$/,''));
+const SW=new Set('para com uma dos das que por mais como sobre entre ser ter vaga voce voces sera serao quando onde nossa nosso nossos experiencia anos conhecimento conhecimentos atuar area empresa equipe time trabalho desejavel diferencial requisitos responsabilidades atividades beneficios habilidades profissional sera ter tem uma uns seu sua seus suas ao aos nas nos pelo pela mas ou em de da do na no e a o os as um'.split(' '));
+function topKw(s){const f=new Map();toks(s).forEach((t,i)=>{if(t.length<3||SW.has(t)||/^\d+$/.test(t))return;const o=f.get(t);f.set(t,o?{n:o.n+1,i:o.i}:{n:1,i})});
+  return[...f].sort((a,b)=>b[1].n-a[1].n||a[1].i-b[1].i).slice(0,20).map(x=>x[0])}
+
+function evaluate(){
+  const R=[],add=(g,m,p,t,w,x)=>R.push({g,m,p,t,w,x:x||''});
+  const all=text(),nome=S.nome.trim();
+  add('Contato',5,nome.split(/\s+/).filter(Boolean).length>=2?5:0,'Nome completo','Use nome e sobrenome, como no LinkedIn. O ATS usa o nome para criar seu cadastro.');
+  add('Contato',5,/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(S.email.trim())?5:0,'E-mail válido','Sem e-mail legível o recrutador não consegue te responder. Prefira um endereço profissional.');
+  const d=S.tel.replace(/\D/g,'');
+  add('Contato',4,d.length>=10&&d.length<=13?4:0,'Telefone com DDD','Informe o DDD (e +55 se a vaga for internacional). Não cole textos como “cel:” no número.');
+  add('Contato',3,S.cidade.trim().length>=3?3:0,'Cidade e UF','Muitos filtros de triagem usam localização logo na primeira etapa.');
+  add('Contato',3,/linkedin\.com\/in\//i.test(S.linkedin)?3:0,'Link do LinkedIn','Recrutadores de grandes empresas conferem o LinkedIn. Use o formato linkedin.com/in/seunome.');
+  add('Contato',4,S.cargo.trim().split(/\s+/).filter(Boolean).length>=2?4:0,'Cargo-alvo definido','Um título claro, como “Engenheiro de Software Back-end”, ajuda o ATS a classificar seu perfil.');
+
+  const r=S.resumo.trim();
+  add('Resumo',8,r.length>=200&&r.length<=600?8:(r.length>=80&&r.length<=800?4:0),'Resumo com 200 a 600 caracteres',`Seu resumo tem ${r.length} caracteres. Cite cargo, anos de experiência, tecnologias principais e um resultado.`);
+  add('Resumo',3,r&&!/^(eu|meu|minha)\b/i.test(r)?3:0,'Sem primeira pessoa','Currículos profissionais omitem “eu”. Comece por “Engenheiro de software com 6 anos de experiência…”.');
+
+  const E=S.exp.filter(x=>x.cargo.trim()||x.empresa.trim());
+  add('Experiência',8,E.length?8:0,'Ao menos uma experiência','Sem experiência formal, inclua estágios, freelas e projetos relevantes como entradas.');
+  const dre=/^(0[1-9]|1[0-2])\/\d{4}$/,okD=x=>dre.test(x.ini.trim())&&(dre.test(x.fim.trim())||/^(atual|presente)$/i.test(x.fim.trim()));
+  const nd=E.filter(okD).length;
+  add('Experiência',8,E.length?Math.round(8*nd/E.length):0,'Datas no padrão MM/AAAA',E.length&&nd<E.length?`${E.length-nd} experiência(s) fora do padrão. O ATS calcula seu tempo de carreira pelas datas: use 03/2021 e “Atual”.`:E.length?'Todas as datas estão no padrão.':'Preencha as datas de cada experiência.');
+  const B=E.flatMap(x=>lines(x.b)),avg=E.length?B.length/E.length:0;
+  add('Experiência',6,avg>=3&&avg<=6?6:(avg>=2&&avg<=8?3:0),'3 a 6 realizações por cargo',`Média atual: ${avg.toFixed(1)} por cargo. Poucas parecem vagas; muitas diluem o que importa.`);
+  const strong=B.filter(s=>/^[A-Za-zÀ-ú]+(ei|i|ou|ui)$/.test(s.split(/\s+/)[0])).length;
+  add('Experiência',6,B.length?Math.round(6*strong/B.length):0,'Começar com verbo de ação',B.length?`${strong} de ${B.length} itens começam com verbo no passado (Desenvolvi, Reduzi, Liderou). É uma checagem aproximada.`:'Adicione realizações em cada cargo.');
+  const weak=B.filter(s=>/^(respons[aá]vel|auxili|ajud|particip|atu(ei|ava)|fui\b|trabalh|era\b)/i.test(s)).length;
+  add('Experiência',4,B.length&&!weak?4:0,'Evitar aberturas fracas',weak?`${weak} item(ns) começam com “responsável por”, “ajudei”, “participei” e similares. Diga o que você entregou.`:B.length?'Nenhuma abertura fraca encontrada.':'Adicione realizações para esta checagem.');
+  const num=B.filter(s=>/\d/.test(s)).length;
+  add('Experiência',8,B.length?(num/B.length>=.3?8:num?4:0):0,'Resultados com números',`${num} de ${B.length} itens têm números. Meça com %, R$, usuários, tempo ou volume. Meta: ao menos 30% dos itens.`);
+  const lg=B.filter(s=>s.length>260).length;
+  add('Experiência',3,B.length&&!lg?3:0,'Itens objetivos (até 260 caracteres)',lg?`${lg} item(ns) passam de 260 caracteres. Divida em dois ou corte o contexto.`:B.length?'Todos os itens estão objetivos.':'Adicione realizações para esta checagem.');
+
+  const D=S.edu.filter(x=>x.curso.trim()&&x.inst.trim());
+  add('Formação',5,D.length?5:0,'Curso e instituição preenchidos','Informe curso e instituição, mesmo se estiver cursando ou se for técnico ou livre.');
+
+  const K=list(S.skills);
+  add('Competências',8,K.length>=8?8:K.length>=4?4:0,'Ao menos 8 competências',`Você listou ${K.length}. Use os nomes exatos das ferramentas, como “Spring Boot” em vez de “Spring”.`);
+
+  add('Formato ATS',5,/[\u{1F300}-\u{1FAFF}\u2600-\u27BF\u2B50★●►→✓✔■▪]/u.test(all)?0:5,'Sem emojis ou símbolos decorativos','Ícones e símbolos viram caracteres corrompidos em parte dos sistemas de triagem.');
+  const wc=all.split(/\s+/).filter(Boolean).length;
+  add('Formato ATS',4,wc>=300&&wc<=900?4:(wc>=150?2:0),'Tamanho de 1 a 2 páginas',`Cerca de ${wc} palavras. O ideal fica entre 300 e 900.`);
+
+  add('Formato ATS',4,/\b(cpf|rg|estado civil|solteir[oa]|casad[oa]|divorciad[oa]|data de nascimento|nascid[oa] em|filhos?)\b/i.test(all)?0:4,'Sem dados pessoais desnecessários','CPF, RG, estado civil, filhos e data de nascimento não ajudam na triagem, expõem seus dados (LGPD) e podem gerar viés. Deixe para a admissão.');
+  const STD=['resumo','resumo profissional','perfil profissional','objetivo','experiencia','experiencia profissional','formacao','formacao academica','educacao','competencias','habilidades','habilidades tecnicas','certificacoes','cursos','cursos e certificacoes','idiomas'],bt2=Object.values(S.tit).filter(t=>t.trim()&&!STD.includes(norm(t).trim()));
+  add('Formato ATS',5,bt2.length?0:5,'Títulos de seção reconhecíveis',bt2.length?`Estes títulos podem não ser reconhecidos: ${bt2.join(', ')}. Prefira Experiência Profissional, Formação Acadêmica e Competências.`:'Todos os títulos são convencionais.');
+  const fn=fname();
+  add('Formato ATS',3,/^[A-Za-z0-9_-]{8,}$/.test(fn)&&fn.includes('_')?3:0,'Nome do arquivo identificável',`O arquivo se chamará ${fn||'(vazio)'}.docx. Use Nome_Sobrenome_Cargo, sem espaços ou acentos, para o recrutador achar você no sistema.`);
+  const ym=x=>{const m=x.ini.trim().match(/^(\d\d)\/(\d{4})$/);return m?+m[2]*12+ +m[1]:null},ys=E.map(ym).filter(v=>v!==null),ord=ys.every((v,i)=>!i||v<=ys[i-1]);
+  add('Experiência',4,ord?4:0,'Ordem cronológica inversa',ord?'Da mais recente para a mais antiga, como o ATS espera.':'Há experiências fora de ordem. Coloque a mais recente primeiro.');
+  const bt=new Set(toks(B.join(' '))),inCtx=K.filter(k=>toks(k).every(t=>bt.has(t))).length;
+  add('Competências',6,K.length?Math.round(6*Math.min(1,inCtx/K.length/.5)):0,'Competências comprovadas nas realizações',`${inCtx} de ${K.length} competências também aparecem nas realizações. ATS e recrutadores dão mais peso a termos usados em contexto. Meta: metade ou mais.`);
+  const ct=toks(S.cargo).filter(t=>t.length>2&&!SW.has(t)),tx=new Set(toks([r,...E.map(x=>x.cargo)].join(' ')));
+  add('Resumo',5,ct.length&&ct.some(t=>tx.has(t))?(ct.every(t=>tx.has(t))?5:3):0,'Cargo-alvo repetido no resumo ou nos cargos','O ATS busca o título da vaga no texto. Use o mesmo termo do anúncio no resumo e, se for verdade, em um dos cargos.');
+  const vg=S.vaga.trim();
+  if(vg){const kw=topKw(vg),set=new Set(toks(all)),hit=kw.filter(k=>set.has(k)),miss=kw.filter(k=>!set.has(k));
+    add('Vaga alvo',15,kw.length?Math.round(15*hit.length/kw.length):0,'Palavras-chave da vaga no currículo',`${hit.length} de ${kw.length} termos mais citados na vaga aparecem no seu currículo.${miss.length?' Inclua os que faltam, desde que sejam verdadeiros:':''}`,miss.length?`<div class="chips">${miss.map(k=>`<span>${esc(k)}</span>`).join('')}</div>`:'')}
+  else add('Vaga alvo',0,0,'Compare com uma vaga real','Cole a descrição da vaga no campo Vaga alvo para ver quais palavras-chave faltam. Os ATS ranqueiam candidatos por esse cruzamento.');
+  return R;
+}
+function report(){
+  const R=evaluate(),m=R.reduce((a,x)=>a+x.m,0),p=R.reduce((a,x)=>a+x.p,0),sc=Math.round(100*p/m);
+  const v=sc>=85?['Pronto para enviar','ok']:sc>=70?['Quase lá','ok']:sc>=50?['Precisa de ajustes','wr']:['Reescreva antes de enviar','bd'];
+  const top=R.filter(x=>x.m&&x.p<x.m).sort((a,b)=>(b.m-b.p)-(a.m-a.p)).slice(0,3),C=2*Math.PI*44;
+  const gs=[...new Set(R.map(x=>x.g))];
+  return`<section class="card"><div class="score"><svg width="108" height="108" viewBox="0 0 108 108" role="img" aria-label="Nota ${sc} de 100"><circle cx="54" cy="54" r="44" fill="none" stroke="var(--line)" stroke-width="10"/><circle cx="54" cy="54" r="44" fill="none" stroke="var(--${v[1]})" stroke-width="10" stroke-linecap="round" stroke-dasharray="${(C*sc/100).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 54 54)"/><text x="54" y="62" text-anchor="middle" font-size="26" font-weight="700" fill="var(--ink)">${sc}</text></svg><div><b style="color:var(--${v[1]})">${v[0]}</b><span class="hint" style="margin:0">Nota de 0 a 100 sobre o que você preencheu.</span></div></div>`+
+  (top.length?`<div class="pr"><b>Comece por aqui</b><ol>${top.map(x=>`<li>${x.t}</li>`).join('')}</ol></div>`:'<div class="pr"><b>Nada crítico pendente.</b>Revise os itens marcados como dica.</div>')+
+  gs.map(g=>{const it=R.filter(x=>x.g===g),gm=it.reduce((a,x)=>a+x.m,0),gp=it.reduce((a,x)=>a+x.p,0);
+    return`<div class="grp"><h3>${g}<span>${gm?gp+' de '+gm+' pontos':''}</span></h3>`+it.map(x=>{const s=!x.m?['in','Dica']:x.p===x.m?['ok','Ok']:x.p===0?['bd','Corrigir']:['wr','Ajustar'];
+      return`<div class="ck"><div class="st ${s[0]}">${s[1]}</div><div><b>${x.t}</b><p>${x.w}</p>${x.x}</div></div>`}).join('')+'</div>'}).join('')+'</section>';
+}
+function tab(w){const r=w==='r';$('#pp').hidden=r;$('#rp').hidden=!r;$('#t1').setAttribute('aria-selected',!r);$('#t2').setAttribute('aria-selected',r);
+  if(r)$('#rp').innerHTML=done?report():'<section class="card"><p class="empty2">Preencha os campos e clique em Avaliar currículo para ver a nota.</p></section>'}
+function upd(){$('#paper').innerHTML=prev();$('#plain').value=text();$('#arqp').textContent='Arquivo gerado: '+(fname()||'Curriculo')+'.docx';
+  const n=S.resumo.trim().length;$('#rc').textContent=`${n} caracteres (ideal: 200 a 600)`;$('#kc').textContent=`${list(S.skills).length} competências (ideal: 8 ou mais)`;
+  if(done&&!$('#rp').hidden)$('#rp').innerHTML=report()}
+$('#go').onclick=()=>{done=true;tab('r');if(mob())setV('r');else $('#side').scrollIntoView({behavior:'smooth',block:'start'})};
+$('#cp').onclick=()=>{const a=$('#plain');a.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}
+  $('#cpm').textContent=ok?'Texto copiado.':'Não foi possível copiar. Selecione o texto e use Ctrl+C.'};
+let armed=false;
+$('#clr').onclick=function(){if(!armed){armed=true;this.textContent='Confirmar: apagar tudo';setTimeout(()=>{armed=false;this.textContent='Limpar tudo'},4000);return}
+  S=blank();done=false;save();armed=false;this.textContent='Limpar tudo';tab('p');redraw()};
+const fname=()=>(S.arq||[S.nome,S.cargo].filter(Boolean).join(' ')).trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+function drawTit(){$('#tit').innerHTML=Object.keys(TIT).map(k=>`<label>${TIT[k]}<input data-t="${k}" value="${esc(S.tit[k])}" placeholder="${TIT[k]}"></label>`).join('')}
+function drawBar(){$('#ms').innerHTML=M.list.map(m=>`<option value="${m.id}"${m.id===M.cur?' selected':''}>${esc(m.name)}</option>`).join('');$('#mn').value=cur().name}
+function redraw(){fillScalars();document.querySelectorAll('[data-s]').forEach(e=>{e.checked=!!S.show[e.dataset.s]});drawList('exp');drawList('edu');drawTit();drawBar();upd()}
+document.addEventListener('input',e=>{const t=e.target;if(t.dataset.t){S.tit[t.dataset.t]=t.value;save();upd()}else if(t.id==='mn'){cur().name=t.value||'Sem nome';save();const o=[...$('#ms').options].find(o=>o.value===M.cur);if(o)o.textContent=cur().name}});
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset.s){S.show[t.dataset.s]=t.checked;save();upd()}else if(t.id==='ms'){save();M.cur=t.value;S=cur().data;done=false;tab('p');redraw();save();if(mob())setV('e')}});
+const pick=m=>{M.cur=m.id;S=m.data;done=false;tab('p');redraw();save();if(mob())setV('e')};
+$('#mnew').onclick=()=>{save();const m={id:uid(),name:'Modelo '+(M.list.length+1),data:blank()};M.list.push(m);pick(m)};
+$('#mdup').onclick=()=>{save();const m={id:uid(),name:cur().name+' (cópia)',data:JSON.parse(JSON.stringify(S))};M.list.push(m);pick(m)};
+let dArm=false;
+$('#mdel').onclick=function(){if(!dArm){dArm=true;this.textContent='Confirmar exclusão';setTimeout(()=>{dArm=false;this.textContent='Excluir'},4000);return}
+  dArm=false;this.textContent='Excluir';M.list=M.list.filter(m=>m.id!==M.cur);if(!M.list.length)M.list.push({id:uid(),name:'Modelo 1',data:blank()});pick(M.list[0])};
+let DL=null;
+(async()=>{try{DL=window.claude&&await claude.use('downloads');if(DL)document.querySelectorAll('[data-dl]').forEach(b=>b.hidden=false)}catch(e){}})();
+async function put(n,d,el){const m=$(el||'#dm');if(!DL)return;try{const r=await DL.save({filename:n,data:d});m.textContent=r.status==='saved'?'Arquivo salvo: '+n:'Arquivo enviado.'}catch(e){m.textContent=e&&e.code==='declined'?'Download cancelado.':'Não foi possível baixar aqui. Use Copiar texto.'}}
+const X=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const P=(t,o={})=>`<w:p><w:pPr>${o.st?`<w:pStyle w:val="${o.st}"/>`:`<w:spacing w:before="0" w:after="${o.sa??40}"/>`}${o.bu?'<w:ind w:left="360" w:hanging="220"/>':''}</w:pPr><w:r><w:rPr>${o.b?'<w:b/>':''}${o.sz?`<w:sz w:val="${o.sz}"/>`:''}</w:rPr><w:t xml:space="preserve">${X((o.bu?'• ':'')+t)}</w:t></w:r></w:p>`;
+async function mkdocx(){
+  const{h,sec}=doc(),b=[],NS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"',H='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',RL='http://schemas.openxmlformats.org/officeDocument/2006/relationships/';
+  b.push(P(h.nome||'Seu nome',{st:'Title'}));if(h.cargo)b.push(P(h.cargo,{sz:24}));if(h.c.length)b.push(P(h.c.join(S.sep),{sz:20}));if(h.x)b.push(P(h.x,{sz:20}));
+  sec.forEach(s=>{b.push(P(s.t,{st:'Heading1'}));if(s.p)b.push(P(s.p));(s.i||[]).forEach(i=>{if(i.h)b.push(P(i.h,{b:1,sa:0}));if(i.s)b.push(P(i.s,{sa:20}));i.b.forEach(x=>b.push(P(x,{bu:1})))})});
+  const z=new JSZip();
+  z.file('[Content_Types].xml',H+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>');
+  z.file('_rels/.rels',H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="'+RL+'officeDocument" Target="word/document.xml"/></Relationships>');
+  z.file('word/_rels/document.xml.rels',H+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="'+RL+'styles" Target="styles.xml"/></Relationships>');
+  z.file('word/styles.xml',H+`<w:styles ${NS}><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:cs="Arial"/><w:sz w:val="21"/><w:lang w:val="pt-BR"/></w:rPr></w:rPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style><w:style w:type="paragraph" w:styleId="Title"><w:name w:val="Title"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="0" w:after="40"/></w:pPr><w:rPr><w:b/><w:sz w:val="34"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:keepNext/><w:pBdr><w:bottom w:val="single" w:sz="6" w:space="1" w:color="000000"/></w:pBdr><w:spacing w:before="240" w:after="80"/></w:pPr><w:rPr><w:b/><w:sz w:val="22"/></w:rPr></w:style></w:styles>`);
+  z.file('word/document.xml',H+`<w:document ${NS}><w:body>${b.join('')}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="850" w:right="850" w:bottom="850" w:left="850" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr></w:body></w:document>`);
+  return z.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+$('#ddx').onclick=async()=>{if(typeof JSZip==='undefined'){$('#dm').textContent='Não foi possível gerar o .docx agora. Baixe o .txt.';return}put((fname()||'Curriculo')+'.docx',await mkdocx())};
+$('#dtx').onclick=()=>put((fname()||'Curriculo')+'.txt',text());
+$('#bk').onclick=()=>{save();put('modelos-curriculo.json',JSON.stringify(M),'#bm')};
+const mob=()=>matchMedia('(max-width:920px)').matches;
+function setV(v){document.body.dataset.v=v;document.querySelectorAll('.mnav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===v?'page':'false'));if(v==='p'||v==='r')tab(v);scrollTo(0,0)}
+document.querySelectorAll('.mnav button').forEach(b=>b.onclick=()=>setV(b.dataset.v));
+document.querySelectorAll('#form section.card').forEach((c,i)=>{const h=c.querySelector('h2'),tg=()=>{if(!mob())return;const cl=c.classList.toggle('closed');h.setAttribute('aria-expanded',!cl)};
+  if(mob()){h.setAttribute('role','button');h.tabIndex=0;h.setAttribute('aria-expanded','true')}
+  h.onclick=tg;h.onkeydown=e=>{if(mob()&&(e.key==='Enter'||e.key===' ')){e.preventDefault();tg()}};if(mob()&&i>0)tg()});
+$('#rsb').onclick=()=>$('#rs').click();
+$('#rs').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o.list||!o.list.length)throw 0;const ms=o.list.map(m=>({id:uid(),name:String(m.name||'Importado'),data:fix(m.data)}));save();M.list.push(...ms);pick(ms[0]);$('#bm').textContent=ms.length+' modelo(s) importado(s).'}catch(x){$('#bm').textContent='Arquivo de backup inválido.'}};r.readAsText(f);e.target.value=''};
+redraw();
+</script>
+</body>
+</html>
